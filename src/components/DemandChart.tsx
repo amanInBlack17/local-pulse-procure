@@ -15,66 +15,92 @@ const demandData = [
 
 const DemandChart = () => {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="flex items-center">
-          <TrendingUp className="w-5 h-5 mr-2" />
+    <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl">
+      <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-t-lg">
+        <CardTitle className="flex items-center text-gray-800 dark:text-gray-200">
+          <TrendingUp className="w-5 h-5 mr-2 text-green-600 dark:text-green-400" />
           Demand Prediction Accuracy
         </CardTitle>
-        <CardDescription>
+        <CardDescription className="text-gray-600 dark:text-gray-400">
           Comparison between traditional forecasting and SmartStock AI predictions vs actual sales
         </CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-6">
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={demandData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="day" />
-            <YAxis />
+            <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" className="dark:stroke-gray-600" />
+            <XAxis 
+              dataKey="day" 
+              stroke="#64748b" 
+              className="dark:stroke-gray-400"
+              fontSize={12}
+            />
+            <YAxis 
+              stroke="#64748b" 
+              className="dark:stroke-gray-400"
+              fontSize={12}
+            />
             <Tooltip 
               formatter={(value, name) => [
                 `${value}%`,
                 name === 'traditional' ? 'Traditional Method' :
                 name === 'smartstock' ? 'SmartStock AI' : 'Actual Sales'
               ]}
+              contentStyle={{
+                backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                border: 'none',
+                borderRadius: '12px',
+                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+                backdropFilter: 'blur(10px)'
+              }}
+              className="dark:[&>div]:bg-gray-800/95 dark:[&>div]:text-gray-200"
             />
             <Line 
               type="monotone" 
               dataKey="traditional" 
               stroke="#94a3b8" 
-              strokeWidth={2}
-              strokeDasharray="5 5"
+              strokeWidth={3}
+              strokeDasharray="8 4"
               name="traditional"
+              dot={{ fill: '#94a3b8', strokeWidth: 2, r: 4 }}
+              activeDot={{ r: 6, fill: '#94a3b8' }}
             />
             <Line 
               type="monotone" 
               dataKey="smartstock" 
               stroke="#3b82f6" 
-              strokeWidth={3}
+              strokeWidth={4}
               name="smartstock"
+              dot={{ fill: '#3b82f6', strokeWidth: 2, r: 5 }}
+              activeDot={{ r: 8, fill: '#3b82f6', stroke: '#fff', strokeWidth: 2 }}
             />
             <Line 
               type="monotone" 
               dataKey="actual" 
               stroke="#10b981" 
-              strokeWidth={2}
+              strokeWidth={3}
               name="actual"
+              dot={{ fill: '#10b981', strokeWidth: 2, r: 4 }}
+              activeDot={{ r: 6, fill: '#10b981' }}
             />
           </LineChart>
         </ResponsiveContainer>
         
-        <div className="mt-4 grid grid-cols-3 gap-4 text-center">
-          <div>
-            <p className="text-sm text-gray-500">Traditional Method</p>
-            <p className="text-lg font-semibold text-gray-600">73% Accuracy</p>
+        <div className="mt-6 grid grid-cols-3 gap-6">
+          <div className="text-center p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Traditional Method</p>
+            <p className="text-2xl font-bold text-gray-600 dark:text-gray-300">73%</p>
+            <p className="text-xs text-gray-400 dark:text-gray-500">Accuracy</p>
           </div>
-          <div>
-            <p className="text-sm text-gray-500">SmartStock AI</p>
-            <p className="text-lg font-semibold text-blue-600">91% Accuracy</p>
+          <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">SmartStock AI</p>
+            <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">91%</p>
+            <p className="text-xs text-gray-400 dark:text-gray-500">Accuracy</p>
           </div>
-          <div>
-            <p className="text-sm text-gray-500">Improvement</p>
-            <p className="text-lg font-semibold text-green-600">+18%</p>
+          <div className="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-xl">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Improvement</p>
+            <p className="text-2xl font-bold text-green-600 dark:text-green-400">+18%</p>
+            <p className="text-xs text-gray-400 dark:text-gray-500">Better</p>
           </div>
         </div>
       </CardContent>
