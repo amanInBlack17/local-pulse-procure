@@ -53,7 +53,6 @@ const DemandChart = () => {
                 boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
                 backdropFilter: 'blur(10px)'
               }}
-              className="dark:[&>div]:bg-gray-800/95 dark:[&>div]:text-gray-200"
             />
             <Line 
               type="monotone" 
