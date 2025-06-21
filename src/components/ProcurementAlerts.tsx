@@ -84,12 +84,12 @@ const ProcurementAlerts = () => {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold">Smart Procurement Alerts</h2>
-          <p className="text-gray-600">AI-powered demand predictions based on local intelligence</p>
+          <h2 className="text-xl sm:text-2xl font-bold">Smart Procurement Alerts</h2>
+          <p className="text-gray-600 text-sm sm:text-base">AI-powered demand predictions based on local intelligence</p>
         </div>
-        <Button>
+        <Button className="w-full sm:w-auto">
           <CheckCircle className="w-4 h-4 mr-2" />
           Mark All Reviewed
         </Button>
@@ -100,10 +100,10 @@ const ProcurementAlerts = () => {
           const IconComponent = alert.icon;
           return (
             <Card key={alert.id} className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className="flex items-start justify-between">
-                  <div className="flex items-start space-x-4 flex-1">
-                    <div className={`p-2 rounded-lg ${
+              <CardContent className="p-4 sm:p-6">
+                <div className="flex flex-col lg:flex-row items-start justify-between gap-4">
+                  <div className="flex items-start space-x-3 sm:space-x-4 flex-1 w-full">
+                    <div className={`p-2 rounded-lg flex-shrink-0 ${
                       alert.color === 'red' ? 'bg-red-100' :
                       alert.color === 'orange' ? 'bg-orange-100' :
                       alert.color === 'blue' ? 'bg-blue-100' : 'bg-gray-100'
@@ -115,36 +115,38 @@ const ProcurementAlerts = () => {
                       }`} />
                     </div>
                     
-                    <div className="flex-1">
-                      <div className="flex items-center space-x-3 mb-2">
-                        <Badge className={getPriorityColor(alert.priority)}>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 mb-2">
+                        <Badge className={`${getPriorityColor(alert.priority)} text-xs w-fit`}>
                           {alert.priority.toUpperCase()} PRIORITY
                         </Badge>
-                        <div className="flex items-center text-sm text-gray-500">
-                          <MapPin className="w-3 h-3 mr-1" />
-                          {alert.location}
-                        </div>
-                        <div className="flex items-center text-sm text-gray-500">
-                          <Clock className="w-3 h-3 mr-1" />
-                          {alert.timeframe}
+                        <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-gray-500">
+                          <div className="flex items-center">
+                            <MapPin className="w-3 h-3 mr-1" />
+                            {alert.location}
+                          </div>
+                          <div className="flex items-center">
+                            <Clock className="w-3 h-3 mr-1" />
+                            {alert.timeframe}
+                          </div>
                         </div>
                       </div>
                       
-                      <h3 className="font-semibold text-lg mb-1">{alert.product}</h3>
-                      <p className="text-gray-600 mb-2">{alert.reason}</p>
+                      <h3 className="font-semibold text-base sm:text-lg mb-1">{alert.product}</h3>
+                      <p className="text-gray-600 mb-2 text-sm sm:text-base">{alert.reason}</p>
                       
-                      <div className="flex items-center space-x-4 text-sm">
+                      <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-4 text-sm">
                         <span className="font-medium text-green-600">{alert.prediction}</span>
                         <span className="text-gray-500">Confidence: {alert.confidence}%</span>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="text-right">
-                    <Button variant="outline" size="sm" className="mb-2">
+                  <div className="w-full lg:w-auto lg:text-right">
+                    <Button variant="outline" size="sm" className="w-full lg:w-auto mb-2">
                       View Details
                     </Button>
-                    <p className="text-sm text-gray-600">{alert.action}</p>
+                    <p className="text-xs sm:text-sm text-gray-600">{alert.action}</p>
                   </div>
                 </div>
               </CardContent>

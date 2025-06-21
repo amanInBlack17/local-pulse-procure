@@ -85,22 +85,22 @@ const DataSources = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h2 className="text-2xl font-bold mb-2">Data Source Intelligence</h2>
-        <p className="text-gray-600">Real-time monitoring of diverse data streams for comprehensive market insights</p>
+        <h2 className="text-xl sm:text-2xl font-bold mb-2">Data Source Intelligence</h2>
+        <p className="text-gray-600 text-sm sm:text-base">Real-time monitoring of diverse data streams for comprehensive market insights</p>
       </div>
 
       {/* Summary Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4 sm:mb-6">
         <Card>
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600">Active Sources</p>
-                <p className="text-2xl font-bold">6/6</p>
+                <p className="text-xl sm:text-2xl font-bold">6/6</p>
               </div>
-              <Zap className="w-8 h-8 text-green-500" />
+              <Zap className="w-6 sm:w-8 h-6 sm:h-8 text-green-500" />
             </div>
           </CardContent>
         </Card>
@@ -110,9 +110,9 @@ const DataSources = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600">Avg Accuracy</p>
-                <p className="text-2xl font-bold">91%</p>
+                <p className="text-xl sm:text-2xl font-bold">91%</p>
               </div>
-              <TrendingUp className="w-8 h-8 text-blue-500" />
+              <TrendingUp className="w-6 sm:w-8 h-6 sm:h-8 text-blue-500" />
             </div>
           </CardContent>
         </Card>
@@ -122,32 +122,32 @@ const DataSources = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600">Data Points/Day</p>
-                <p className="text-2xl font-bold">2.8M</p>
+                <p className="text-xl sm:text-2xl font-bold">2.8M</p>
               </div>
-              <Users className="w-8 h-8 text-purple-500" />
+              <Users className="w-6 sm:w-8 h-6 sm:h-8 text-purple-500" />
             </div>
           </CardContent>
         </Card>
       </div>
 
       {/* Data Sources Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         {dataSources.map((source, index) => {
           const IconComponent = source.icon;
           return (
             <Card key={index} className="hover:shadow-lg transition-shadow">
               <CardHeader className="pb-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <div className={`p-2 rounded-lg ${getIconColor(source.color)}`}>
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-start space-x-3 flex-1 min-w-0">
+                    <div className={`p-2 rounded-lg flex-shrink-0 ${getIconColor(source.color)}`}>
                       <IconComponent className="w-5 h-5" />
                     </div>
-                    <div>
-                      <CardTitle className="text-lg">{source.name}</CardTitle>
-                      <CardDescription className="text-sm">{source.description}</CardDescription>
+                    <div className="min-w-0 flex-1">
+                      <CardTitle className="text-base sm:text-lg">{source.name}</CardTitle>
+                      <CardDescription className="text-xs sm:text-sm">{source.description}</CardDescription>
                     </div>
                   </div>
-                  <Badge className={getStatusColor(source.status)}>
+                  <Badge className={`${getStatusColor(source.status)} text-xs flex-shrink-0`}>
                     {source.status}
                   </Badge>
                 </div>
@@ -168,9 +168,9 @@ const DataSources = () => {
                     <span className="font-medium">{source.lastUpdate}</span>
                   </div>
                   
-                  <div className="flex justify-between items-center text-sm">
+                  <div className="flex justify-between items-start text-sm">
                     <span className="text-gray-500">Data Coverage:</span>
-                    <span className="font-medium">{source.dataPoints}</span>
+                    <span className="font-medium text-right">{source.dataPoints}</span>
                   </div>
                 </div>
               </CardContent>

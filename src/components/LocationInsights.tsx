@@ -86,70 +86,70 @@ const LocationInsights = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h2 className="text-2xl font-bold mb-2">Location-Based Insights</h2>
-        <p className="text-gray-600">Real-time monitoring and optimization across all store locations</p>
+        <h2 className="text-xl sm:text-2xl font-bold mb-2">Location-Based Insights</h2>
+        <p className="text-gray-600 text-sm sm:text-base">Real-time monitoring and optimization across all store locations</p>
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
         <Card>
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="text-center">
-              <p className="text-2xl font-bold text-blue-600">129</p>
-              <p className="text-sm text-gray-600">Total Stores</p>
+              <p className="text-lg sm:text-2xl font-bold text-blue-600">129</p>
+              <p className="text-xs sm:text-sm text-gray-600">Total Stores</p>
             </div>
           </CardContent>
         </Card>
         
         <Card>
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="text-center">
-              <p className="text-2xl font-bold text-red-600">22</p>
-              <p className="text-sm text-gray-600">Active Alerts</p>
+              <p className="text-lg sm:text-2xl font-bold text-red-600">22</p>
+              <p className="text-xs sm:text-sm text-gray-600">Active Alerts</p>
             </div>
           </CardContent>
         </Card>
         
         <Card>
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="text-center">
-              <p className="text-2xl font-bold text-green-600">90%</p>
-              <p className="text-sm text-gray-600">Avg Accuracy</p>
+              <p className="text-lg sm:text-2xl font-bold text-green-600">90%</p>
+              <p className="text-xs sm:text-sm text-gray-600">Avg Accuracy</p>
             </div>
           </CardContent>
         </Card>
         
         <Card>
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="text-center">
-              <p className="text-2xl font-bold text-purple-600">$641K</p>
-              <p className="text-sm text-gray-600">Weekly Impact</p>
+              <p className="text-lg sm:text-2xl font-bold text-purple-600">$641K</p>
+              <p className="text-xs sm:text-sm text-gray-600">Weekly Impact</p>
             </div>
           </CardContent>
         </Card>
       </div>
 
       {/* Location Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {locationData.map((location, index) => (
           <Card key={index} className="hover:shadow-lg transition-shadow">
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <MapPin className="w-5 h-5 text-blue-600" />
-                  <CardTitle className="text-lg">{location.city}</CardTitle>
+                  <MapPin className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                  <CardTitle className="text-base sm:text-lg">{location.city}</CardTitle>
                 </div>
                 {getStatusIcon(location.status)}
               </div>
-              <CardDescription>{location.stores} stores monitored</CardDescription>
+              <CardDescription className="text-xs sm:text-sm">{location.stores} stores monitored</CardDescription>
             </CardHeader>
             
             <CardContent className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Alert Level:</span>
-                <Badge className={getAlertColor(location.alertLevel)}>
+                <Badge className={`${getAlertColor(location.alertLevel)} text-xs`}>
                   {location.alertLevel.toUpperCase()}
                 </Badge>
               </div>
@@ -166,7 +166,7 @@ const LocationInsights = () => {
               
               <div className="border-t pt-3">
                 <p className="text-sm font-medium text-gray-700 mb-1">Top Trend:</p>
-                <p className="text-sm text-gray-600">{location.topTrend}</p>
+                <p className="text-xs sm:text-sm text-gray-600">{location.topTrend}</p>
               </div>
               
               <div className="flex items-center justify-between bg-green-50 p-2 rounded">

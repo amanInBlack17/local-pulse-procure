@@ -31,91 +31,91 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
       {/* Header */}
       <div className="bg-white border-b shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center space-x-4">
               <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
                 <Target className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">SmartStock AI</h1>
-                <p className="text-sm text-gray-500">Context-Aware Procurement Intelligence</p>
+                <h1 className="text-xl sm:text-2xl font-bold text-gray-900">SmartStock AI</h1>
+                <p className="text-xs sm:text-sm text-gray-500">Context-Aware Procurement Intelligence</p>
               </div>
             </div>
-            <div className="flex items-center space-x-4">
-              <Badge variant="outline" className="text-green-600 border-green-200">
+            <div className="flex items-center space-x-2 sm:space-x-4 w-full sm:w-auto">
+              <Badge variant="outline" className="text-green-600 border-green-200 text-xs sm:text-sm">
                 <Zap className="w-3 h-3 mr-1" />
                 Live Monitoring
               </Badge>
-              <Button variant="outline" size="sm">
-                <Bell className="w-4 h-4 mr-2" />
-                Alerts ({activeAlerts})
+              <Button variant="outline" size="sm" className="text-xs sm:text-sm">
+                <Bell className="w-4 h-4 mr-1 sm:mr-2" />
+                <span className="hidden sm:inline">Alerts</span> ({activeAlerts})
               </Button>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto p-6 space-y-6">
+      <div className="max-w-7xl mx-auto p-4 sm:p-6 space-y-4 sm:space-y-6">
         {/* Key Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <Card className="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-blue-100">Active Alerts</p>
-                  <p className="text-3xl font-bold">{activeAlerts}</p>
+                  <p className="text-blue-100 text-sm">Active Alerts</p>
+                  <p className="text-2xl sm:text-3xl font-bold">{activeAlerts}</p>
                 </div>
-                <AlertTriangle className="w-8 h-8 text-blue-200" />
+                <AlertTriangle className="w-6 sm:w-8 h-6 sm:h-8 text-blue-200" />
               </div>
             </CardContent>
           </Card>
 
           <Card className="bg-gradient-to-r from-green-500 to-green-600 text-white">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-green-100">Prediction Accuracy</p>
-                  <p className="text-3xl font-bold">{accuracyScore}%</p>
+                  <p className="text-green-100 text-sm">Prediction Accuracy</p>
+                  <p className="text-2xl sm:text-3xl font-bold">{accuracyScore}%</p>
                 </div>
-                <Target className="w-8 h-8 text-green-200" />
+                <Target className="w-6 sm:w-8 h-6 sm:h-8 text-green-200" />
               </div>
             </CardContent>
           </Card>
 
           <Card className="bg-gradient-to-r from-purple-500 to-purple-600 text-white">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-purple-100">Weekly Savings</p>
-                  <p className="text-3xl font-bold">$2.3M</p>
+                  <p className="text-purple-100 text-sm">Weekly Savings</p>
+                  <p className="text-2xl sm:text-3xl font-bold">$2.3M</p>
                 </div>
-                <TrendingUp className="w-8 h-8 text-purple-200" />
+                <TrendingUp className="w-6 sm:w-8 h-6 sm:h-8 text-purple-200" />
               </div>
             </CardContent>
           </Card>
 
           <Card className="bg-gradient-to-r from-orange-500 to-orange-600 text-white">
-            <CardContent className="p-6">
+            <CardContent className="p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-orange-100">Locations Monitored</p>
-                  <p className="text-3xl font-bold">4,743</p>
+                  <p className="text-orange-100 text-sm">Locations Monitored</p>
+                  <p className="text-2xl sm:text-3xl font-bold">4,743</p>
                 </div>
-                <MapPin className="w-8 h-8 text-orange-200" />
+                <MapPin className="w-6 sm:w-8 h-6 sm:h-8 text-orange-200" />
               </div>
             </CardContent>
           </Card>
         </div>
 
         {/* Main Content */}
-        <Tabs defaultValue="alerts" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5">
-            <TabsTrigger value="alerts">Smart Alerts</TabsTrigger>
-            <TabsTrigger value="sources">Data Sources</TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
-            <TabsTrigger value="locations">Locations</TabsTrigger>
-            <TabsTrigger value="trending">Trending</TabsTrigger>
+        <Tabs defaultValue="alerts" className="space-y-4 sm:space-y-6">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 h-auto">
+            <TabsTrigger value="alerts" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Smart Alerts</TabsTrigger>
+            <TabsTrigger value="sources" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Data Sources</TabsTrigger>
+            <TabsTrigger value="analytics" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Analytics</TabsTrigger>
+            <TabsTrigger value="locations" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Locations</TabsTrigger>
+            <TabsTrigger value="trending" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Trending</TabsTrigger>
           </TabsList>
 
           <TabsContent value="alerts">
@@ -127,11 +127,11 @@ const Index = () => {
           </TabsContent>
 
           <TabsContent value="analytics">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6">
               <DemandChart />
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center">
+                  <CardTitle className="flex items-center text-lg">
                     <BarChart3 className="w-5 h-5 mr-2" />
                     Performance Metrics
                   </CardTitle>
@@ -173,12 +173,12 @@ const Index = () => {
         </Tabs>
 
         {/* Footer */}
-        <div className="bg-white rounded-lg border p-6 mt-8">
+        <div className="bg-white rounded-lg border p-4 sm:p-6 mt-6 sm:mt-8">
           <div className="text-center">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
               Revolutionary Retail Intelligence
             </h3>
-            <p className="text-gray-600 max-w-3xl mx-auto">
+            <p className="text-gray-600 max-w-3xl mx-auto text-sm sm:text-base">
               SmartStock AI combines traditional sales data with real-time local intelligence to predict demand with unprecedented accuracy. 
               By analyzing local events, social trends, weather patterns, and hyperlocal news, we help retailers optimize inventory 
               and maximize profitability while minimizing waste.
