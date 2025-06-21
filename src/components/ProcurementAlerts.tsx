@@ -75,94 +75,76 @@ const alerts = [
 const ProcurementAlerts = () => {
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case "high": return "bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-300 border-red-200 dark:border-red-600";
-      case "medium": return "bg-orange-50 dark:bg-orange-900/20 text-orange-800 dark:text-orange-300 border-orange-200 dark:border-orange-600";
-      case "low": return "bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 border-blue-200 dark:border-blue-600";
-      default: return "bg-gray-50 dark:bg-gray-900/20 text-gray-800 dark:text-gray-300 border-gray-200 dark:border-gray-600";
-    }
-  };
-
-  const getIconBgColor = (color: string) => {
-    switch (color) {
-      case 'red': return 'bg-red-100 dark:bg-red-900/30';
-      case 'orange': return 'bg-orange-100 dark:bg-orange-900/30';
-      case 'blue': return 'bg-blue-100 dark:bg-blue-900/30';
-      default: return 'bg-gray-100 dark:bg-gray-900/30';
-    }
-  };
-
-  const getIconColor = (color: string) => {
-    switch (color) {
-      case 'red': return 'text-red-600 dark:text-red-400';
-      case 'orange': return 'text-orange-600 dark:text-orange-400';
-      case 'blue': return 'text-blue-600 dark:text-blue-400';
-      default: return 'text-gray-600 dark:text-gray-400';
+      case "high": return "bg-red-100 text-red-800 border-red-200";
+      case "medium": return "bg-orange-100 text-orange-800 border-orange-200";
+      case "low": return "bg-blue-100 text-blue-800 border-blue-200";
+      default: return "bg-gray-100 text-gray-800 border-gray-200";
     }
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Smart Procurement Alerts
-          </h2>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">AI-powered demand predictions based on local intelligence</p>
+          <h2 className="text-2xl font-bold">Smart Procurement Alerts</h2>
+          <p className="text-gray-600">AI-powered demand predictions based on local intelligence</p>
         </div>
-        <Button className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-200">
+        <Button>
           <CheckCircle className="w-4 h-4 mr-2" />
           Mark All Reviewed
         </Button>
       </div>
 
-      <div className="grid gap-6">
+      <div className="grid gap-4">
         {alerts.map((alert) => {
           const IconComponent = alert.icon;
           return (
-            <Card key={alert.id} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+            <Card key={alert.id} className="hover:shadow-lg transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-start justify-between">
                   <div className="flex items-start space-x-4 flex-1">
-                    <div className={`p-3 rounded-xl ${getIconBgColor(alert.color)} shadow-lg`}>
-                      <IconComponent className={`w-6 h-6 ${getIconColor(alert.color)}`} />
+                    <div className={`p-2 rounded-lg ${
+                      alert.color === 'red' ? 'bg-red-100' :
+                      alert.color === 'orange' ? 'bg-orange-100' :
+                      alert.color === 'blue' ? 'bg-blue-100' : 'bg-gray-100'
+                    }`}>
+                      <IconComponent className={`w-5 h-5 ${
+                        alert.color === 'red' ? 'text-red-600' :
+                        alert.color === 'orange' ? 'text-orange-600' :
+                        alert.color === 'blue' ? 'text-blue-600' : 'text-gray-600'
+                      }`} />
                     </div>
                     
                     <div className="flex-1">
-                      <div className="flex items-center space-x-3 mb-3">
-                        <Badge className={getPriorityColor(alert.priority)} >
+                      <div className="flex items-center space-x-3 mb-2">
+                        <Badge className={getPriorityColor(alert.priority)}>
                           {alert.priority.toUpperCase()} PRIORITY
                         </Badge>
-                        <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        <div className="flex items-center text-sm text-gray-500">
                           <MapPin className="w-3 h-3 mr-1" />
                           {alert.location}
                         </div>
-                        <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        <div className="flex items-center text-sm text-gray-500">
                           <Clock className="w-3 h-3 mr-1" />
                           {alert.timeframe}
                         </div>
                       </div>
                       
-                      <h3 className="font-bold text-xl mb-2 text-gray-900 dark:text-gray-100">{alert.product}</h3>
-                      <p className="text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">{alert.reason}</p>
+                      <h3 className="font-semibold text-lg mb-1">{alert.product}</h3>
+                      <p className="text-gray-600 mb-2">{alert.reason}</p>
                       
-                      <div className="flex items-center space-x-6 text-sm">
-                        <span className="font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-3 py-1 rounded-full">
-                          {alert.prediction}
-                        </span>
-                        <span className="text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 px-3 py-1 rounded-full">
-                          Confidence: {alert.confidence}%
-                        </span>
+                      <div className="flex items-center space-x-4 text-sm">
+                        <span className="font-medium text-green-600">{alert.prediction}</span>
+                        <span className="text-gray-500">Confidence: {alert.confidence}%</span>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="text-right space-y-3">
-                    <Button variant="outline" size="sm" className="bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-600 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors">
+                  <div className="text-right">
+                    <Button variant="outline" size="sm" className="mb-2">
                       View Details
                     </Button>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 p-2 rounded-lg">
-                      {alert.action}
-                    </p>
+                    <p className="text-sm text-gray-600">{alert.action}</p>
                   </div>
                 </div>
               </CardContent>
