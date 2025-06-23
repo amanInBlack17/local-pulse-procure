@@ -1,251 +1,148 @@
 
-import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { TrendingUp, TrendingDown, Hash, Users, Clock, BarChart3 } from "lucide-react";
-import { useQuery } from '@tanstack/react-query';
+import { TrendingUp, ExternalLink, Users, Hash, BarChart3 } from "lucide-react";
 
 interface TrendingTopic {
   id: string;
-  keyword: string;
-  trend: 'up' | 'down' | 'stable';
-  changePercent: number;
-  volume: number;
+  topic: string;
+  mentions: number;
+  sentiment: 'positive' | 'neutral' | 'negative';
   category: string;
-  relevanceScore: number;
-  timeframe: string;
+  impact: string;
   relatedProducts: string[];
-  source: string;
 }
 
 const TrendingTopics = () => {
-  // Simulated trending data - in real app, this would come from APIs like Google Trends, Twitter API, etc.
-  const mockTrendingData: TrendingTopic[] = [
+  const trendingData: TrendingTopic[] = [
     {
-      id: '1',
-      keyword: 'Spring Break Travel',
-      trend: 'up',
-      changePercent: 45,
-      volume: 125000,
-      category: 'Travel & Tourism',
-      relevanceScore: 92,
-      timeframe: 'Last 24h',
-      relatedProducts: ['Sunscreen', 'Beach Gear', 'Travel Accessories'],
-      source: 'Google Trends'
+      id: 'trend-1',
+      topic: 'Sustainable Packaging',
+      mentions: 15420,
+      sentiment: 'positive',
+      category: 'Environmental',
+      impact: 'High demand for eco-friendly packaging solutions',
+      relatedProducts: ['Biodegradable containers', 'Recyclable bags', 'Compostable cups']
     },
     {
-      id: '2',
-      keyword: 'Weather Emergency Kit',
-      trend: 'up',
-      changePercent: 67,
-      volume: 89000,
-      category: 'Emergency Preparedness',
-      relevanceScore: 88,
-      timeframe: 'Last 12h',
-      relatedProducts: ['Flashlights', 'Batteries', 'First Aid'],
-      source: 'Social Media'
+      id: 'trend-2',
+      topic: 'Remote Work Essentials',
+      mentions: 12850,
+      sentiment: 'positive',
+      category: 'Technology',
+      impact: 'Increased demand for home office supplies',
+      relatedProducts: ['Ergonomic chairs', 'Standing desks', 'Webcams', 'Headsets']
     },
     {
-      id: '3',
-      keyword: 'Home Office Setup',
-      trend: 'stable',
-      changePercent: 5,
-      volume: 156000,
-      category: 'Work From Home',
-      relevanceScore: 75,
-      timeframe: 'Last 7d',
-      relatedProducts: ['Desk Chairs', 'Monitors', 'Keyboards'],
-      source: 'Search Trends'
+      id: 'trend-3',
+      topic: 'Health & Wellness',
+      mentions: 11340,
+      sentiment: 'positive',
+      category: 'Lifestyle',
+      impact: 'Growing market for health-focused products',
+      relatedProducts: ['Fitness equipment', 'Supplements', 'Air purifiers']
     },
     {
-      id: '4',
-      keyword: 'Outdoor Festival Gear',
-      trend: 'up',
-      changePercent: 38,
-      volume: 78000,
-      category: 'Entertainment',
-      relevanceScore: 84,
-      timeframe: 'Last 3d',
-      relatedProducts: ['Portable Chairs', 'Coolers', 'Tents'],
-      source: 'Social Media'
+      id: 'trend-4',
+      topic: 'Supply Chain Disruption',
+      mentions: 8920,
+      sentiment: 'negative',
+      category: 'Business',
+      impact: 'Potential shortages in electronics and automotive',
+      relatedProducts: ['Semiconductors', 'Electronics', 'Auto parts']
     },
     {
-      id: '5',
-      keyword: 'Winter Clearance',
-      trend: 'down',
-      changePercent: -25,
-      volume: 34000,
-      category: 'Seasonal',
-      relevanceScore: 65,
-      timeframe: 'Last 7d',
-      relatedProducts: ['Winter Coats', 'Boots', 'Heaters'],
-      source: 'Retail Analytics'
+      id: 'trend-5',
+      topic: 'Electric Vehicles',
+      mentions: 7630,
+      sentiment: 'positive',
+      category: 'Automotive',
+      impact: 'Surge in EV-related product demand',
+      relatedProducts: ['Charging stations', 'EV accessories', 'Batteries']
     }
   ];
 
-  const { data: trendingData = mockTrendingData, isLoading } = useQuery({
-    queryKey: ['trendingTopics'],
-    queryFn: async () => {
-      // In a real app, this would call actual trending APIs
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API delay
-      return mockTrendingData;
-    },
-    refetchInterval: 10 * 60 * 1000, // Refetch every 10 minutes
-  });
-
-  const getTrendIcon = (trend: string) => {
-    if (trend === 'up') return <TrendingUp className="w-4 h-4 text-green-600" />;
-    if (trend === 'down') return <TrendingDown className="w-4 h-4 text-red-600" />;
-    return <BarChart3 className="w-4 h-4 text-gray-600" />;
+  const getSentimentColor = (sentiment: string) => {
+    switch (sentiment) {
+      case 'positive': return 'bg-green-100 text-green-800 border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800';
+      case 'negative': return 'bg-red-100 text-red-800 border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-800';
+      case 'neutral': return 'bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800';
+      default: return 'bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600';
+    }
   };
 
-  const getTrendColor = (trend: string) => {
-    if (trend === 'up') return 'text-green-600';
-    if (trend === 'down') return 'text-red-600';
-    return 'text-gray-600';
-  };
-
-  const formatVolume = (volume: number) => {
-    if (volume >= 1000000) return `${(volume / 1000000).toFixed(1)}M`;
-    if (volume >= 1000) return `${(volume / 1000).toFixed(1)}K`;
-    return volume.toString();
+  const formatMentions = (mentions: number) => {
+    if (mentions >= 1000) {
+      return `${(mentions / 1000).toFixed(1)}K`;
+    }
+    return mentions.toString();
   };
 
   return (
     <div className="space-y-4 sm:space-y-6">
-      <div>
-        <h2 className="text-xl sm:text-2xl font-bold mb-2">Trending Topics</h2>
-        <p className="text-gray-600 text-sm sm:text-base">Real-time trending topics affecting consumer behavior</p>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <h2 className="text-xl sm:text-2xl font-bold">Trending Topics</h2>
+          <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">Social media and market trend analysis</p>
+        </div>
+        <Button variant="outline" size="sm">
+          <BarChart3 className="w-4 h-4 mr-2" />
+          View Analytics
+        </Button>
       </div>
 
-      {/* Trending Overview */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600">Trending Up</p>
-                <p className="text-2xl font-bold text-green-600">
-                  {trendingData.filter(t => t.trend === 'up').length}
-                </p>
-              </div>
-              <TrendingUp className="w-8 h-8 text-green-500" />
-            </div>
-          </CardContent>
-        </Card>
-        
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600">Total Volume</p>
-                <p className="text-2xl font-bold text-blue-600">
-                  {formatVolume(trendingData.reduce((sum, t) => sum + t.volume, 0))}
-                </p>
-              </div>
-              <Users className="w-8 h-8 text-blue-500" />
-            </div>
-          </CardContent>
-        </Card>
-        
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600">Avg Relevance</p>
-                <p className="text-2xl font-bold text-purple-600">
-                  {Math.round(trendingData.reduce((sum, t) => sum + t.relevanceScore, 0) / trendingData.length)}%
-                </p>
-              </div>
-              <BarChart3 className="w-8 h-8 text-purple-500" />
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600">Categories</p>
-                <p className="text-2xl font-bold text-orange-600">
-                  {new Set(trendingData.map(t => t.category)).size}
-                </p>
-              </div>
-              <Hash className="w-8 h-8 text-orange-500" />
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Trending Topics Grid */}
-      <div className="grid gap-4">
-        {isLoading && (
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 animate-spin rounded-full border-2 border-blue-600 border-t-transparent"></div>
-                <span>Loading trending topics...</span>
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
-        {trendingData.map((topic) => (
-          <Card key={topic.id} className="hover:shadow-lg transition-shadow">
+      {/* Trending Grid */}
+      <div className="grid gap-4 sm:gap-6">
+        {trendingData.map((trend, index) => (
+          <Card key={trend.id} className="hover:shadow-lg transition-shadow">
             <CardContent className="p-4 sm:p-6">
               <div className="flex flex-col lg:flex-row items-start justify-between gap-4">
-                <div className="flex-1 space-y-3">
+                <div className="flex-1 space-y-3 sm:space-y-4">
                   <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
                     <div className="flex items-center space-x-2">
-                      {getTrendIcon(topic.trend)}
-                      <h3 className="font-semibold text-base sm:text-lg">{topic.keyword}</h3>
+                      <span className="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400">#{index + 1}</span>
+                      <h3 className="font-semibold text-lg sm:text-xl">{trend.topic}</h3>
                     </div>
-                    <Badge variant="secondary" className="text-xs w-fit">
-                      {topic.category}
+                    <Badge className={`${getSentimentColor(trend.sentiment)} text-xs w-fit`}>
+                      {trend.sentiment.toUpperCase()}
                     </Badge>
                   </div>
                   
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
-                    <div>
-                      <p className="font-medium text-gray-700">Change</p>
-                      <p className={`font-bold ${getTrendColor(topic.trend)}`}>
-                        {topic.trend === 'up' ? '+' : topic.trend === 'down' ? '' : ''}{topic.changePercent}%
-                      </p>
+                  <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+                    <div className="flex items-center">
+                      <Users className="w-4 h-4 mr-1" />
+                      {formatMentions(trend.mentions)} mentions
                     </div>
-                    <div>
-                      <p className="font-medium text-gray-700">Volume</p>
-                      <p className="font-bold">{formatVolume(topic.volume)}</p>
-                    </div>
-                    <div>
-                      <p className="font-medium text-gray-700">Timeframe</p>
-                      <p className="text-gray-600">{topic.timeframe}</p>
-                    </div>
-                    <div>
-                      <p className="font-medium text-gray-700">Source</p>
-                      <p className="text-gray-600">{topic.source}</p>
+                    <div className="flex items-center">
+                      <Hash className="w-4 h-4 mr-1" />
+                      {trend.category}
                     </div>
                   </div>
                   
-                  <div>
-                    <p className="text-sm font-medium text-gray-700 mb-1">Related Products:</p>
-                    <div className="flex flex-wrap gap-1">
-                      {topic.relatedProducts.map((product, idx) => (
+                  <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">{trend.impact}</p>
+                  
+                  <div className="space-y-2">
+                    <h4 className="font-medium text-sm">Related Products:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {trend.relatedProducts.map((product, idx) => (
                         <Badge key={idx} variant="outline" className="text-xs">
                           {product}
                         </Badge>
                       ))}
                     </div>
                   </div>
-                  
-                  <div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-sm font-medium">Relevance Score</span>
-                      <span className="text-sm font-bold text-blue-600">{topic.relevanceScore}%</span>
-                    </div>
-                    <Progress value={topic.relevanceScore} className="h-2" />
-                  </div>
+                </div>
+                
+                <div className="flex flex-col space-y-2 w-full lg:w-auto">
+                  <Button variant="outline" size="sm" className="w-full lg:w-auto">
+                    <TrendingUp className="w-4 h-4 mr-2" />
+                    View Trend
+                  </Button>
+                  <Button variant="ghost" size="sm" className="w-full lg:w-auto">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Details
+                  </Button>
                 </div>
               </div>
             </CardContent>

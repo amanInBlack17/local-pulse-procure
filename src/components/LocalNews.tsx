@@ -1,11 +1,10 @@
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Newspaper, MapPin, Clock, ExternalLink, RefreshCw } from "lucide-react";
-import { useQuery } from '@tanstack/react-query';
 
 interface NewsItem {
   id: string;
@@ -20,50 +19,72 @@ interface NewsItem {
 }
 
 const LocalNews = () => {
-  const [apiKey, setApiKey] = useState(localStorage.getItem('newsApiKey') || '');
   const [location, setLocation] = useState('Dallas, TX');
 
-  const { data: newsData = [], isLoading, error, refetch } = useQuery({
-    queryKey: ['localNews', location, apiKey],
-    queryFn: async () => {
-      if (!apiKey) return [];
-      
-      // Simulated API call - replace with actual News API call
-      const response = await fetch(`https://newsapi.org/v2/everything?q=${location}&sortBy=publishedAt&apiKey=${apiKey}`);
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch news');
-      }
-      
-      const data = await response.json();
-      
-      return data.articles?.slice(0, 10).map((article: any, index: number) => ({
-        id: `news-${index}`,
-        title: article.title,
-        description: article.description,
-        url: article.url,
-        publishedAt: article.publishedAt,
-        source: article.source.name,
-        location: location,
-        category: 'General',
-        impact: index % 3 === 0 ? 'high' : index % 2 === 0 ? 'medium' : 'low'
-      })) || [];
+  const mockNewsData: NewsItem[] = [
+    {
+      id: 'news-1',
+      title: 'Major Construction Project Begins on Main Street',
+      description: 'A new infrastructure project will affect traffic patterns and potentially impact local business foot traffic for the next 6 months.',
+      url: '#',
+      publishedAt: '2024-06-23T08:00:00Z',
+      source: 'Dallas Morning News',
+      location: 'Dallas, TX',
+      category: 'Infrastructure',
+      impact: 'high'
     },
-    enabled: !!apiKey,
-    refetchInterval: 5 * 60 * 1000, // Refetch every 5 minutes
-  });
-
-  const handleApiKeyChange = (key: string) => {
-    setApiKey(key);
-    localStorage.setItem('newsApiKey', key);
-  };
+    {
+      id: 'news-2',
+      title: 'Local Tech Company Announces Major Expansion',
+      description: 'TechCorp plans to hire 500 new employees in the downtown area, potentially increasing demand for nearby services.',
+      url: '#',
+      publishedAt: '2024-06-23T06:30:00Z',
+      source: 'Business Journal',
+      location: 'Dallas, TX',
+      category: 'Business',
+      impact: 'medium'
+    },
+    {
+      id: 'news-3',
+      title: 'Weekend Festival Expected to Draw Large Crowds',
+      description: 'The annual summer festival is expected to bring over 50,000 visitors to the downtown area this weekend.',
+      url: '#',
+      publishedAt: '2024-06-22T14:15:00Z',
+      source: 'City Events',
+      location: 'Dallas, TX',
+      category: 'Events',
+      impact: 'high'
+    },
+    {
+      id: 'news-4',
+      title: 'New Shopping Center Opens in Suburban Area',
+      description: 'A major retail development opens with 30 stores, potentially affecting shopping patterns in the region.',
+      url: '#',
+      publishedAt: '2024-06-22T10:00:00Z',
+      source: 'Retail News',
+      location: 'Dallas, TX',
+      category: 'Retail',
+      impact: 'medium'
+    },
+    {
+      id: 'news-5',
+      title: 'Public Transit Route Changes Announced',
+      description: 'Bus route modifications will affect accessibility to several commercial districts starting next month.',
+      url: '#',
+      publishedAt: '2024-06-21T16:45:00Z',
+      source: 'Transit Authority',
+      location: 'Dallas, TX',
+      category: 'Transportation',
+      impact: 'low'
+    }
+  ];
 
   const getImpactColor = (impact: string) => {
     switch (impact) {
-      case 'high': return 'bg-red-100 text-red-800 border-red-200';
-      case 'medium': return 'bg-orange-100 text-orange-800 border-orange-200';
-      case 'low': return 'bg-blue-100 text-blue-800 border-blue-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'high': return 'bg-red-100 text-red-800 border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-800';
+      case 'medium': return 'bg-orange-100 text-orange-800 border-orange-200 dark:bg-orange-900/20 dark:text-orange-400 dark:border-orange-800';
+      case 'low': return 'bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800';
+      default: return 'bg-gray-100 text-gray-800 border-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600';
     }
   };
 
@@ -77,39 +98,12 @@ const LocalNews = () => {
     return `${Math.floor(diffInHours / 24)}d ago`;
   };
 
-  if (!apiKey) {
-    return (
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center text-lg">
-            <Newspaper className="w-5 h-5 mr-2" />
-            Local News Intelligence
-          </CardTitle>
-          <CardDescription>
-            Enter your News API key to access local news data
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <Input
-            type="password"
-            placeholder="Enter News API Key"
-            value={apiKey}
-            onChange={(e) => handleApiKeyChange(e.target.value)}
-          />
-          <p className="text-sm text-gray-600">
-            Get your free API key from <a href="https://newsapi.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">newsapi.org</a>
-          </p>
-        </CardContent>
-      </Card>
-    );
-  }
-
   return (
     <div className="space-y-4 sm:space-y-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <h2 className="text-xl sm:text-2xl font-bold">Local News Intelligence</h2>
-          <p className="text-gray-600 text-sm sm:text-base">Real-time local news affecting business operations</p>
+          <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">Real-time local news affecting business operations</p>
         </div>
         <div className="flex items-center space-x-2 w-full sm:w-auto">
           <Input
@@ -118,7 +112,7 @@ const LocalNews = () => {
             onChange={(e) => setLocation(e.target.value)}
             className="w-full sm:w-48"
           />
-          <Button variant="outline" size="sm" onClick={() => refetch()}>
+          <Button variant="outline" size="sm">
             <RefreshCw className="w-4 h-4" />
           </Button>
         </div>
@@ -126,26 +120,7 @@ const LocalNews = () => {
 
       {/* News Grid */}
       <div className="grid gap-4">
-        {isLoading && (
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center space-x-2">
-                <RefreshCw className="w-4 h-4 animate-spin" />
-                <span>Loading local news...</span>
-              </div>
-            </CardContent>
-          </Card>
-        )}
-
-        {error && (
-          <Card>
-            <CardContent className="p-6">
-              <p className="text-red-600">Error loading news: {error.message}</p>
-            </CardContent>
-          </Card>
-        )}
-
-        {newsData.map((item: NewsItem) => (
+        {mockNewsData.map((item: NewsItem) => (
           <Card key={item.id} className="hover:shadow-lg transition-shadow">
             <CardContent className="p-4 sm:p-6">
               <div className="flex flex-col lg:flex-row items-start justify-between gap-4">
@@ -154,7 +129,7 @@ const LocalNews = () => {
                     <Badge className={`${getImpactColor(item.impact)} text-xs w-fit`}>
                       {item.impact.toUpperCase()} IMPACT
                     </Badge>
-                    <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-gray-500">
+                    <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                       <div className="flex items-center">
                         <MapPin className="w-3 h-3 mr-1" />
                         {item.location}
@@ -168,7 +143,7 @@ const LocalNews = () => {
                   </div>
                   
                   <h3 className="font-semibold text-base sm:text-lg leading-tight">{item.title}</h3>
-                  <p className="text-gray-600 text-sm sm:text-base line-clamp-2">{item.description}</p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base line-clamp-2">{item.description}</p>
                 </div>
                 
                 <Button variant="outline" size="sm" asChild className="w-full lg:w-auto">
@@ -181,15 +156,6 @@ const LocalNews = () => {
             </CardContent>
           </Card>
         ))}
-
-        {newsData.length === 0 && !isLoading && !error && (
-          <Card>
-            <CardContent className="p-6 text-center">
-              <Newspaper className="w-12 h-12 mx-auto mb-4 text-gray-400" />
-              <p className="text-gray-600">No local news found for {location}</p>
-            </CardContent>
-          </Card>
-        )}
       </div>
     </div>
   );

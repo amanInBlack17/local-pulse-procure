@@ -113,16 +113,18 @@ const Index = () => {
         </div>
 
         {/* Main Content */}
-        <Tabs defaultValue="alerts"className="space-y-4 sm:space-y-6">
-          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 h-auto">
-            <TabsTrigger value="alerts" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Smart Alerts</TabsTrigger>
-            <TabsTrigger value="sources" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Data Sources</TabsTrigger>
-            <TabsTrigger value="analytics" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Analytics</TabsTrigger>
-            <TabsTrigger value="locations" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Locations</TabsTrigger>
-            <TabsTrigger value="trending" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Products</TabsTrigger>
-            <TabsTrigger value="news" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Local News</TabsTrigger>
-            <TabsTrigger value="topics" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Trending</TabsTrigger>
-          </TabsList>
+        <Tabs defaultValue="alerts" className="space-y-4 sm:space-y-6">
+          <div className="overflow-x-auto">
+            <TabsList className="grid w-full min-w-fit grid-cols-7 h-auto">
+              <TabsTrigger value="alerts" className="text-xs sm:text-sm py-2 px-2 sm:px-4 whitespace-nowrap">Smart Alerts</TabsTrigger>
+              <TabsTrigger value="sources" className="text-xs sm:text-sm py-2 px-2 sm:px-4 whitespace-nowrap">Data Sources</TabsTrigger>
+              <TabsTrigger value="analytics" className="text-xs sm:text-sm py-2 px-2 sm:px-4 whitespace-nowrap">Analytics</TabsTrigger>
+              <TabsTrigger value="locations" className="text-xs sm:text-sm py-2 px-2 sm:px-4 whitespace-nowrap">Locations</TabsTrigger>
+              <TabsTrigger value="trending" className="text-xs sm:text-sm py-2 px-2 sm:px-4 whitespace-nowrap">Products</TabsTrigger>
+              <TabsTrigger value="news" className="text-xs sm:text-sm py-2 px-2 sm:px-4 whitespace-nowrap">Local News</TabsTrigger>
+              <TabsTrigger value="topics" className="text-xs sm:text-sm py-2 px-2 sm:px-4 whitespace-nowrap">Trending</TabsTrigger>
+            </TabsList>
+          </div>
 
           <TabsContent value="alerts">
             <ProcurementAlerts />
@@ -146,21 +148,21 @@ const Index = () => {
                   <div>
                     <div className="flex justify-between mb-2">
                       <span className="text-sm font-medium">Overstock Reduction</span>
-                      <span className="text-sm text-gray-500">73%</span>
+                      <span className="text-sm text-gray-500 dark:text-gray-400">73%</span>
                     </div>
                     <Progress value={73} className="h-2" />
                   </div>
                   <div>
                     <div className="flex justify-between mb-2">
                       <span className="text-sm font-medium">Stockout Prevention</span>
-                      <span className="text-sm text-gray-500">89%</span>
+                      <span className="text-sm text-gray-500 dark:text-gray-400">89%</span>
                     </div>
                     <Progress value={89} className="h-2" />
                   </div>
                   <div>
                     <div className="flex justify-between mb-2">
                       <span className="text-sm font-medium">Revenue Impact</span>
-                      <span className="text-sm text-gray-500">+12.5%</span>
+                      <span className="text-sm text-gray-500 dark:text-gray-400">+12.5%</span>
                     </div>
                     <Progress value={85} className="h-2" />
                   </div>
