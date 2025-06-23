@@ -112,63 +112,61 @@ const Index = () => {
           </Card>
         </div>
 
-        {/* Main Content with Improved Tabs */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+        {/* Main Content Tabs - Removed Card Wrapper */}
+        <div className="w-full space-y-6">
           <Tabs defaultValue="alerts" className="w-full">
-            {/* Enhanced Tab Navigation */}
-            <div className="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 rounded-t-lg">
-              <div className="px-4 sm:px-6 py-4">
-                <div className="overflow-x-auto">
-                  <TabsList className="grid w-full min-w-max grid-cols-7 bg-white dark:bg-gray-700 shadow-sm border border-gray-200 dark:border-gray-600 rounded-lg p-1 gap-1">
-                    <TabsTrigger 
-                      value="alerts" 
-                      className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
-                    >
-                      Smart Alerts
-                    </TabsTrigger>
-                    <TabsTrigger 
-                      value="sources" 
-                      className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
-                    >
-                      Data Sources
-                    </TabsTrigger>
-                    <TabsTrigger 
-                      value="analytics" 
-                      className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
-                    >
-                      Analytics
-                    </TabsTrigger>
-                    <TabsTrigger 
-                      value="locations" 
-                      className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
-                    >
-                      Locations
-                    </TabsTrigger>
-                    <TabsTrigger 
-                      value="trending" 
-                      className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
-                    >
-                      Products
-                    </TabsTrigger>
-                    <TabsTrigger 
-                      value="news" 
-                      className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
-                    >
-                      Local News
-                    </TabsTrigger>
-                    <TabsTrigger 
-                      value="topics" 
-                      className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
-                    >
-                      Trending
-                    </TabsTrigger>
-                  </TabsList>
-                </div>
+            {/* Tab Navigation */}
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 p-4 sm:p-6 mb-6">
+              <div className="overflow-x-auto">
+                <TabsList className="grid w-full min-w-max grid-cols-7 bg-gray-50 dark:bg-gray-700/50 shadow-sm border border-gray-200 dark:border-gray-600 rounded-lg p-1 gap-1">
+                  <TabsTrigger 
+                    value="alerts" 
+                    className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                  >
+                    Smart Alerts
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="sources" 
+                    className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                  >
+                    Data Sources
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="analytics" 
+                    className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                  >
+                    Analytics
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="locations" 
+                    className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                  >
+                    Locations
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="trending" 
+                    className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                  >
+                    Products
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="news" 
+                    className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                  >
+                    Local News
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="topics" 
+                    className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                  >
+                    Trending
+                  </TabsTrigger>
+                </TabsList>
               </div>
             </div>
 
-            {/* Tab Content with Better Spacing */}
-            <div className="p-4 sm:p-6">
+            {/* Tab Content - Now Without Card Wrapper */}
+            <div className="space-y-6">
               <TabsContent value="alerts" className="mt-0">
                 <ProcurementAlerts />
               </TabsContent>
