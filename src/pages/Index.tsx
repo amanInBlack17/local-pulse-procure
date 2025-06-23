@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -112,7 +111,7 @@ const Index = () => {
           </Card>
         </div>
 
-        {/* Main Content Tabs - Removed Card Wrapper */}
+        {/* Main Content Tabs */}
         <div className="w-full space-y-6">
           <Tabs defaultValue="alerts" className="w-full">
             {/* Tab Navigation */}
@@ -165,7 +164,7 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Tab Content - Now Without Card Wrapper */}
+            {/* Tab Content */}
             <div className="space-y-6">
               <TabsContent value="alerts" className="mt-0">
                 <ProcurementAlerts />
@@ -231,18 +230,60 @@ const Index = () => {
           </Tabs>
         </div>
 
-        {/* Footer */}
-        <div className="bg-white dark:bg-gray-800 rounded-lg border shadow-lg p-4 sm:p-6 mt-6 sm:mt-8">
-          <div className="text-center">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+        {/* Enhanced Footer */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-green-600 rounded-2xl shadow-2xl p-8 sm:p-12 mt-8 sm:mt-12">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Ccircle cx="7" cy="7" r="7"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+          
+          {/* Content */}
+          <div className="relative z-10 text-center text-white">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full mb-6">
+              <Target className="w-8 h-8 text-white" />
+            </div>
+            
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
               Revolutionary Retail Intelligence
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-sm sm:text-base">
+            
+            <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full mx-auto mb-6"></div>
+            
+            <p className="text-blue-50 text-base sm:text-lg lg:text-xl max-w-4xl mx-auto leading-relaxed font-light">
               SmartStock AI combines traditional sales data with real-time local intelligence to predict demand with unprecedented accuracy. 
               By analyzing local events, social trends, weather patterns, and hyperlocal news, we help retailers optimize inventory 
               and maximize profitability while minimizing waste.
             </p>
+            
+            {/* Feature highlights */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8 sm:mt-10">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-3">
+                  <BarChart3 className="w-6 h-6 text-white" />
+                </div>
+                <h4 className="font-semibold text-white mb-2">Predictive Analytics</h4>
+                <p className="text-blue-100 text-sm">Advanced AI algorithms for demand forecasting</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-3">
+                  <MapPin className="w-6 h-6 text-white" />
+                </div>
+                <h4 className="font-semibold text-white mb-2">Local Intelligence</h4>
+                <p className="text-blue-100 text-sm">Real-time local events and trend analysis</p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-3">
+                  <Zap className="w-6 h-6 text-white" />
+                </div>
+                <h4 className="font-semibold text-white mb-2">Smart Optimization</h4>
+                <p className="text-blue-100 text-sm">Automated inventory and procurement decisions</p>
+              </div>
+            </div>
           </div>
+          
+          {/* Decorative elements */}
+          <div className="absolute top-4 right-4 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
+          <div className="absolute bottom-4 left-4 w-16 h-16 bg-yellow-400/20 rounded-full blur-lg"></div>
         </div>
       </div>
     </div>
