@@ -7,11 +7,14 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, TrendingUp, Calendar, Cloud, Users, MapPin, Bell, Target, BarChart3, Zap } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import ProcurementAlerts from "@/components/ProcurementAlerts";
 import DataSources from "@/components/DataSources";
 import DemandChart from "@/components/DemandChart";
 import LocationInsights from "@/components/LocationInsights";
 import TrendingProducts from "@/components/TrendingProducts";
+import LocalNews from "@/components/LocalNews";
+import TrendingTopics from "@/components/TrendingTopics";
 
 const Index = () => {
   const [activeAlerts, setActiveAlerts] = useState(12);
@@ -28,9 +31,9 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Header */}
-      <div className="bg-white border-b shadow-sm">
+      <div className="bg-white dark:bg-gray-800 border-b shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="flex items-center space-x-4">
@@ -38,8 +41,8 @@ const Index = () => {
                 <Target className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-xl sm:text-2xl font-bold text-gray-900">SmartStock AI</h1>
-                <p className="text-xs sm:text-sm text-gray-500">Context-Aware Procurement Intelligence</p>
+                <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">SmartStock AI</h1>
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Context-Aware Procurement Intelligence</p>
               </div>
             </div>
             <div className="flex items-center space-x-2 sm:space-x-4 w-full sm:w-auto">
@@ -51,6 +54,7 @@ const Index = () => {
                 <Bell className="w-4 h-4 mr-1 sm:mr-2" />
                 <span className="hidden sm:inline">Alerts</span> ({activeAlerts})
               </Button>
+              <ThemeToggle />
             </div>
           </div>
         </div>
@@ -109,13 +113,15 @@ const Index = () => {
         </div>
 
         {/* Main Content */}
-        <Tabs defaultValue="alerts" className="space-y-4 sm:space-y-6">
-          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 h-auto">
+        <Tabs defaultValue="alerts"className="space-y-4 sm:space-y-6">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 h-auto">
             <TabsTrigger value="alerts" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Smart Alerts</TabsTrigger>
             <TabsTrigger value="sources" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Data Sources</TabsTrigger>
             <TabsTrigger value="analytics" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Analytics</TabsTrigger>
             <TabsTrigger value="locations" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Locations</TabsTrigger>
-            <TabsTrigger value="trending" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Trending</TabsTrigger>
+            <TabsTrigger value="trending" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Products</TabsTrigger>
+            <TabsTrigger value="news" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Local News</TabsTrigger>
+            <TabsTrigger value="topics" className="text-xs sm:text-sm py-2 px-2 sm:px-4">Trending</TabsTrigger>
           </TabsList>
 
           <TabsContent value="alerts">
@@ -170,15 +176,23 @@ const Index = () => {
           <TabsContent value="trending">
             <TrendingProducts />
           </TabsContent>
+
+          <TabsContent value="news">
+            <LocalNews />
+          </TabsContent>
+
+          <TabsContent value="topics">
+            <TrendingTopics />
+          </TabsContent>
         </Tabs>
 
         {/* Footer */}
-        <div className="bg-white rounded-lg border p-4 sm:p-6 mt-6 sm:mt-8">
+        <div className="bg-white dark:bg-gray-800 rounded-lg border p-4 sm:p-6 mt-6 sm:mt-8">
           <div className="text-center">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
               Revolutionary Retail Intelligence
             </h3>
-            <p className="text-gray-600 max-w-3xl mx-auto text-sm sm:text-base">
+            <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-sm sm:text-base">
               SmartStock AI combines traditional sales data with real-time local intelligence to predict demand with unprecedented accuracy. 
               By analyzing local events, social trends, weather patterns, and hyperlocal news, we help retailers optimize inventory 
               and maximize profitability while minimizing waste.
