@@ -229,52 +229,96 @@ const Index = () => {
         </div>
 
         {/* Enhanced Footer - Made Smaller */}
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-700 rounded-xl shadow-lg border border-blue-100 dark:border-gray-600 p-6 mt-8">
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-4">
-              <Target className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-            </div>
-            
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
-              Revolutionary Retail Intelligence
-            </h3>
-            
-            <div className="w-16 h-0.5 bg-blue-500 rounded-full mx-auto mb-4"></div>
-            
-            <p className="text-gray-600 dark:text-gray-300 text-base max-w-3xl mx-auto leading-relaxed mb-6">
-              SmartStock AI combines traditional sales data with real-time local intelligence to predict demand with unprecedented accuracy. 
-              By analyzing local events, social trends, weather patterns, and hyperlocal news, we help retailers optimize inventory 
-              and maximize profitability while minimizing waste.
-            </p>
-            
-            {/* Feature highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6">
-              <div className="text-center">
-                <div className="w-10 h-10 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2 shadow-sm">
-                  <BarChart3 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                </div>
-                <h4 className="font-semibold text-gray-800 dark:text-white mb-1 text-sm">Predictive Analytics</h4>
-                <p className="text-gray-600 dark:text-gray-400 text-xs">Advanced AI algorithms for demand forecasting</p>
+        <Card className="shadow-md bg-white dark:bg-gray-800">
+          <CardContent className="p-6">
+            <div className="text-center space-y-6">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                <Target className="w-6 h-6 text-blue-600 dark:text-blue-400" />
               </div>
               
-              <div className="text-center">
-                <div className="w-10 h-10 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2 shadow-sm">
-                  <MapPin className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                </div>
-                <h4 className="font-semibold text-gray-800 dark:text-white mb-1 text-sm">Local Intelligence</h4>
-                <p className="text-gray-600 dark:text-gray-400 text-xs">Real-time local events and trend analysis</p>
+              <div>
+                <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
+                  Revolutionary Retail Intelligence
+                </h3>
+                <div className="w-16 h-0.5 bg-blue-500 rounded-full mx-auto mb-4"></div>
+                <p className="text-gray-600 dark:text-gray-300 text-base max-w-3xl mx-auto leading-relaxed">
+                  SmartStock AI combines traditional sales data with real-time local intelligence to predict demand with unprecedented accuracy. 
+                  By analyzing local events, social trends, weather patterns, and hyperlocal news, we help retailers optimize inventory 
+                  and maximize profitability while minimizing waste.
+                </p>
               </div>
-              
-              <div className="text-center">
-                <div className="w-10 h-10 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2 shadow-sm">
-                  <Zap className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+
+              {/* Logo Section */}
+              <div className="pt-6 border-t border-gray-200 dark:border-gray-600">
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Trusted by leading retailers</p>
+                <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
+                  {/* Placeholder logos - these would be replaced with actual company logos */}
+                  <div className="flex items-center space-x-2">
+                    <div className="w-8 h-8 bg-red-500 rounded flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">T</span>
+                    </div>
+                    <span className="text-gray-600 dark:text-gray-400 font-medium">Target</span>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2">
+                    <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">W</span>
+                    </div>
+                    <span className="text-gray-600 dark:text-gray-400 font-medium">Walmart</span>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2">
+                    <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">H</span>
+                    </div>
+                    <span className="text-gray-600 dark:text-gray-400 font-medium">Home Depot</span>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2">
+                    <div className="w-8 h-8 bg-green-600 rounded flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">S</span>
+                    </div>
+                    <span className="text-gray-600 dark:text-gray-400 font-medium">Starbucks</span>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2">
+                    <div className="w-8 h-8 bg-purple-600 rounded flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">C</span>
+                    </div>
+                    <span className="text-gray-600 dark:text-gray-400 font-medium">Costco</span>
+                  </div>
                 </div>
-                <h4 className="font-semibold text-gray-800 dark:text-white mb-1 text-sm">Smart Optimization</h4>
-                <p className="text-gray-600 dark:text-gray-400 text-xs">Automated inventory and procurement decisions</p>
+              </div>
+
+              {/* Feature highlights */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6">
+                <div className="text-center">
+                  <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <BarChart3 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <h4 className="font-semibold text-gray-800 dark:text-white mb-1 text-sm">Predictive Analytics</h4>
+                  <p className="text-gray-600 dark:text-gray-400 text-xs">Advanced AI algorithms for demand forecasting</p>
+                </div>
+                
+                <div className="text-center">
+                  <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <MapPin className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <h4 className="font-semibold text-gray-800 dark:text-white mb-1 text-sm">Local Intelligence</h4>
+                  <p className="text-gray-600 dark:text-gray-400 text-xs">Real-time local events and trend analysis</p>
+                </div>
+                
+                <div className="text-center">
+                  <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <Zap className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <h4 className="font-semibold text-gray-800 dark:text-white mb-1 text-sm">Smart Optimization</h4>
+                  <p className="text-gray-600 dark:text-gray-400 text-xs">Automated inventory and procurement decisions</p>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
