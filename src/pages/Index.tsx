@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -115,53 +116,51 @@ const Index = () => {
         <div className="w-full space-y-6">
           <Tabs defaultValue="alerts" className="w-full">
             {/* Tab Navigation */}
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 p-4 sm:p-6 mb-6">
-              <div className="overflow-x-auto">
-                <TabsList className="grid w-full min-w-max grid-cols-7 bg-gray-50 dark:bg-gray-700/50 shadow-sm border border-gray-200 dark:border-gray-600 rounded-lg p-1 gap-1">
-                  <TabsTrigger 
-                    value="alerts" 
-                    className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
-                  >
-                    Smart Alerts
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="sources" 
-                    className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
-                  >
-                    Data Sources
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="analytics" 
-                    className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
-                  >
-                    Analytics
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="locations" 
-                    className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
-                  >
-                    Locations
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="trending" 
-                    className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
-                  >
-                    Products
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="news" 
-                    className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
-                  >
-                    Local News
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="topics" 
-                    className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
-                  >
-                    Trending
-                  </TabsTrigger>
-                </TabsList>
-              </div>
+            <div className="overflow-x-auto mb-6">
+              <TabsList className="grid w-full min-w-max grid-cols-7 bg-gray-50 dark:bg-gray-700/50 shadow-sm border border-gray-200 dark:border-gray-600 rounded-lg p-1 gap-1">
+                <TabsTrigger 
+                  value="alerts" 
+                  className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                >
+                  Smart Alerts
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="sources" 
+                  className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                >
+                  Data Sources
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="analytics" 
+                  className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                >
+                  Analytics
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="locations" 
+                  className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                >
+                  Locations
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="trending" 
+                  className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                >
+                  Products
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="news" 
+                  className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                >
+                  Local News
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="topics" 
+                  className="text-xs sm:text-sm py-2.5 px-3 sm:px-4 whitespace-nowrap data-[state=active]:bg-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-600"
+                >
+                  Trending
+                </TabsTrigger>
+              </TabsList>
             </div>
 
             {/* Tab Content */}
@@ -233,7 +232,9 @@ const Index = () => {
         {/* Enhanced Footer */}
         <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-green-600 rounded-2xl shadow-2xl p-8 sm:p-12 mt-8 sm:mt-12">
           {/* Background Pattern */}
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Ccircle cx="7" cy="7" r="7"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+          <div className="absolute inset-0 opacity-20" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='7' cy='7' r='7'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          }}></div>
           
           {/* Content */}
           <div className="relative z-10 text-center text-white">
