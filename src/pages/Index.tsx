@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -230,61 +229,51 @@ const Index = () => {
         </div>
 
         {/* Enhanced Footer - Made Smaller */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-green-600 rounded-2xl shadow-2xl p-6 sm:p-8 mt-8">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-20" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='7' cy='7' r='7'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-          }}></div>
-          
-          {/* Content */}
-          <div className="relative z-10 text-center text-white">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full mb-4">
-              <Target className="w-6 h-6 text-white" />
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-700 rounded-xl shadow-lg border border-blue-100 dark:border-gray-600 p-6 mt-8">
+          <div className="text-center">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full mb-4">
+              <Target className="w-6 h-6 text-blue-600 dark:text-blue-400" />
             </div>
             
-            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+            <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
               Revolutionary Retail Intelligence
             </h3>
             
-            <div className="w-20 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full mx-auto mb-4"></div>
+            <div className="w-16 h-0.5 bg-blue-500 rounded-full mx-auto mb-4"></div>
             
-            <p className="text-blue-50 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed font-light">
+            <p className="text-gray-600 dark:text-gray-300 text-base max-w-3xl mx-auto leading-relaxed mb-6">
               SmartStock AI combines traditional sales data with real-time local intelligence to predict demand with unprecedented accuracy. 
               By analyzing local events, social trends, weather patterns, and hyperlocal news, we help retailers optimize inventory 
               and maximize profitability while minimizing waste.
             </p>
             
             {/* Feature highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6">
               <div className="text-center">
-                <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <BarChart3 className="w-5 h-5 text-white" />
+                <div className="w-10 h-10 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2 shadow-sm">
+                  <BarChart3 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                 </div>
-                <h4 className="font-semibold text-white mb-1 text-sm">Predictive Analytics</h4>
-                <p className="text-blue-100 text-xs">Advanced AI algorithms for demand forecasting</p>
+                <h4 className="font-semibold text-gray-800 dark:text-white mb-1 text-sm">Predictive Analytics</h4>
+                <p className="text-gray-600 dark:text-gray-400 text-xs">Advanced AI algorithms for demand forecasting</p>
               </div>
               
               <div className="text-center">
-                <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <MapPin className="w-5 h-5 text-white" />
+                <div className="w-10 h-10 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2 shadow-sm">
+                  <MapPin className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                 </div>
-                <h4 className="font-semibold text-white mb-1 text-sm">Local Intelligence</h4>
-                <p className="text-blue-100 text-xs">Real-time local events and trend analysis</p>
+                <h4 className="font-semibold text-gray-800 dark:text-white mb-1 text-sm">Local Intelligence</h4>
+                <p className="text-gray-600 dark:text-gray-400 text-xs">Real-time local events and trend analysis</p>
               </div>
               
               <div className="text-center">
-                <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <Zap className="w-5 h-5 text-white" />
+                <div className="w-10 h-10 bg-white dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2 shadow-sm">
+                  <Zap className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                 </div>
-                <h4 className="font-semibold text-white mb-1 text-sm">Smart Optimization</h4>
-                <p className="text-blue-100 text-xs">Automated inventory and procurement decisions</p>
+                <h4 className="font-semibold text-gray-800 dark:text-white mb-1 text-sm">Smart Optimization</h4>
+                <p className="text-gray-600 dark:text-gray-400 text-xs">Automated inventory and procurement decisions</p>
               </div>
             </div>
           </div>
-          
-          {/* Decorative elements */}
-          <div className="absolute top-4 right-4 w-16 h-16 bg-white/10 rounded-full blur-xl"></div>
-          <div className="absolute bottom-4 left-4 w-12 h-12 bg-yellow-400/20 rounded-full blur-lg"></div>
         </div>
       </div>
     </div>
