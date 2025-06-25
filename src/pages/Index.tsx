@@ -229,8 +229,8 @@ const Index = () => {
           </Tabs>
         </div>
 
-        {/* Enhanced Footer */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-green-600 rounded-2xl shadow-2xl p-8 sm:p-12 mt-8 sm:mt-12">
+        {/* Enhanced Footer - Made Smaller */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-green-600 rounded-2xl shadow-2xl p-6 sm:p-8 mt-8">
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-20" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='7' cy='7' r='7'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
@@ -238,53 +238,53 @@ const Index = () => {
           
           {/* Content */}
           <div className="relative z-10 text-center text-white">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full mb-6">
-              <Target className="w-8 h-8 text-white" />
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full mb-4">
+              <Target className="w-6 h-6 text-white" />
             </div>
             
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
               Revolutionary Retail Intelligence
             </h3>
             
-            <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full mx-auto mb-6"></div>
+            <div className="w-20 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full mx-auto mb-4"></div>
             
-            <p className="text-blue-50 text-base sm:text-lg lg:text-xl max-w-4xl mx-auto leading-relaxed font-light">
+            <p className="text-blue-50 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed font-light">
               SmartStock AI combines traditional sales data with real-time local intelligence to predict demand with unprecedented accuracy. 
               By analyzing local events, social trends, weather patterns, and hyperlocal news, we help retailers optimize inventory 
               and maximize profitability while minimizing waste.
             </p>
             
             {/* Feature highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8 sm:mt-10">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
               <div className="text-center">
-                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <BarChart3 className="w-6 h-6 text-white" />
+                <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <BarChart3 className="w-5 h-5 text-white" />
                 </div>
-                <h4 className="font-semibold text-white mb-2">Predictive Analytics</h4>
-                <p className="text-blue-100 text-sm">Advanced AI algorithms for demand forecasting</p>
+                <h4 className="font-semibold text-white mb-1 text-sm">Predictive Analytics</h4>
+                <p className="text-blue-100 text-xs">Advanced AI algorithms for demand forecasting</p>
               </div>
               
               <div className="text-center">
-                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <MapPin className="w-6 h-6 text-white" />
+                <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <MapPin className="w-5 h-5 text-white" />
                 </div>
-                <h4 className="font-semibold text-white mb-2">Local Intelligence</h4>
-                <p className="text-blue-100 text-sm">Real-time local events and trend analysis</p>
+                <h4 className="font-semibold text-white mb-1 text-sm">Local Intelligence</h4>
+                <p className="text-blue-100 text-xs">Real-time local events and trend analysis</p>
               </div>
               
               <div className="text-center">
-                <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <Zap className="w-6 h-6 text-white" />
+                <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <Zap className="w-5 h-5 text-white" />
                 </div>
-                <h4 className="font-semibold text-white mb-2">Smart Optimization</h4>
-                <p className="text-blue-100 text-sm">Automated inventory and procurement decisions</p>
+                <h4 className="font-semibold text-white mb-1 text-sm">Smart Optimization</h4>
+                <p className="text-blue-100 text-xs">Automated inventory and procurement decisions</p>
               </div>
             </div>
           </div>
           
           {/* Decorative elements */}
-          <div className="absolute top-4 right-4 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
-          <div className="absolute bottom-4 left-4 w-16 h-16 bg-yellow-400/20 rounded-full blur-lg"></div>
+          <div className="absolute top-4 right-4 w-16 h-16 bg-white/10 rounded-full blur-xl"></div>
+          <div className="absolute bottom-4 left-4 w-12 h-12 bg-yellow-400/20 rounded-full blur-lg"></div>
         </div>
       </div>
     </div>
