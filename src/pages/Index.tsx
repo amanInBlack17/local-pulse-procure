@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -228,8 +229,8 @@ const Index = () => {
           </Tabs>
         </div>
 
-        {/* Enhanced Footer - Made Smaller */}
-        <Card className="shadow-md bg-white dark:bg-gray-800">
+        {/* Enhanced Footer */}
+        <Card className="shadow-md">
           <CardContent className="p-6">
             <div className="text-center space-y-6">
               <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full">
@@ -246,48 +247,6 @@ const Index = () => {
                   By analyzing local events, social trends, weather patterns, and hyperlocal news, we help retailers optimize inventory 
                   and maximize profitability while minimizing waste.
                 </p>
-              </div>
-
-              {/* Logo Section */}
-              <div className="pt-6 border-t border-gray-200 dark:border-gray-600">
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Trusted by leading retailers</p>
-                <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-                  {/* Placeholder logos - these would be replaced with actual company logos */}
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-red-500 rounded flex items-center justify-center">
-                      <span className="text-white font-bold text-sm">T</span>
-                    </div>
-                    <span className="text-gray-600 dark:text-gray-400 font-medium">Target</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
-                      <span className="text-white font-bold text-sm">W</span>
-                    </div>
-                    <span className="text-gray-600 dark:text-gray-400 font-medium">Walmart</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center">
-                      <span className="text-white font-bold text-sm">H</span>
-                    </div>
-                    <span className="text-gray-600 dark:text-gray-400 font-medium">Home Depot</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-green-600 rounded flex items-center justify-center">
-                      <span className="text-white font-bold text-sm">S</span>
-                    </div>
-                    <span className="text-gray-600 dark:text-gray-400 font-medium">Starbucks</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-purple-600 rounded flex items-center justify-center">
-                      <span className="text-white font-bold text-sm">C</span>
-                    </div>
-                    <span className="text-gray-600 dark:text-gray-400 font-medium">Costco</span>
-                  </div>
-                </div>
               </div>
 
               {/* Feature highlights */}
