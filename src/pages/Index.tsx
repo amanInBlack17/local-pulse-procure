@@ -1,5 +1,3 @@
-
-
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -250,68 +248,27 @@ const Index = () => {
                 </p>
               </div>
 
-              {/* Logo Section with Catchy Colors */}
-              <div className="pt-6 border-t border-gray-200 dark:border-gray-600">
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Trusted by leading retailers</p>
-                <div className="flex flex-wrap justify-center items-center gap-8 opacity-80 hover:opacity-100 transition-opacity">
-                  <div className="flex items-center space-x-2 transform hover:scale-105 transition-transform">
-                    <div className="w-8 h-8 bg-gradient-to-br from-red-400 to-red-600 rounded-lg flex items-center justify-center shadow-md">
-                      <span className="text-white font-bold text-sm">T</span>
-                    </div>
-                    <span className="text-gray-700 dark:text-gray-300 font-medium">Target</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-2 transform hover:scale-105 transition-transform">
-                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center shadow-md">
-                      <span className="text-white font-bold text-sm">W</span>
-                    </div>
-                    <span className="text-gray-700 dark:text-gray-300 font-medium">Walmart</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-2 transform hover:scale-105 transition-transform">
-                    <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-lg flex items-center justify-center shadow-md">
-                      <span className="text-white font-bold text-sm">H</span>
-                    </div>
-                    <span className="text-gray-700 dark:text-gray-300 font-medium">Home Depot</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-2 transform hover:scale-105 transition-transform">
-                    <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg flex items-center justify-center shadow-md">
-                      <span className="text-white font-bold text-sm">S</span>
-                    </div>
-                    <span className="text-gray-700 dark:text-gray-300 font-medium">Starbucks</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-2 transform hover:scale-105 transition-transform">
-                    <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-700 rounded-lg flex items-center justify-center shadow-md">
-                      <span className="text-white font-bold text-sm">C</span>
-                    </div>
-                    <span className="text-gray-700 dark:text-gray-300 font-medium">Costco</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Feature highlights */}
+              {/* Feature highlights with colorful backgrounds */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6">
                 <div className="text-center">
-                  <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <BarChart3 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mx-auto mb-2 shadow-md">
+                    <BarChart3 className="w-5 h-5 text-white" />
                   </div>
                   <h4 className="font-semibold text-gray-800 dark:text-white mb-1 text-sm">Predictive Analytics</h4>
                   <p className="text-gray-600 dark:text-gray-400 text-xs">Advanced AI algorithms for demand forecasting</p>
                 </div>
                 
                 <div className="text-center">
-                  <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <MapPin className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center mx-auto mb-2 shadow-md">
+                    <MapPin className="w-5 h-5 text-white" />
                   </div>
                   <h4 className="font-semibold text-gray-800 dark:text-white mb-1 text-sm">Local Intelligence</h4>
                   <p className="text-gray-600 dark:text-gray-400 text-xs">Real-time local events and trend analysis</p>
                 </div>
                 
                 <div className="text-center">
-                  <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <Zap className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center mx-auto mb-2 shadow-md">
+                    <Zap className="w-5 h-5 text-white" />
                   </div>
                   <h4 className="font-semibold text-gray-800 dark:text-white mb-1 text-sm">Smart Optimization</h4>
                   <p className="text-gray-600 dark:text-gray-400 text-xs">Automated inventory and procurement decisions</p>
@@ -326,4 +283,3 @@ const Index = () => {
 };
 
 export default Index;
-
